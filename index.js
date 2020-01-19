@@ -5,6 +5,7 @@ return `
                 <div class="c-paleta__color">
                 </div> 
                 <div class="c-paleta__hex">
+                    <label id='caption'>#</label>
                     <input type="text"  value="00FF00" >
                 </div>                 
                 <div class="c-paleta__slider-hue">
@@ -25,7 +26,7 @@ return `
 }
 
 
-function refreshPaleta(indexPaleta, color) {
+function refreshPaleta(indexPaleta, color,noUpdateChart) {
     let rgbColor;
     let hslColor;
 
@@ -44,7 +45,10 @@ function refreshPaleta(indexPaleta, color) {
     valHSLSliderColor(indexPaleta, hslColor);
     valHSLNumberColor(indexPaleta, hslColor);
     updateQueryString(indexPaleta);
-    updateChart();
+    
+    if (!noUpdateChart) {
+        updateChart();
+    }
 }
 
 
@@ -285,6 +289,29 @@ function createChart() {
                         }
                     }
                 ],
+            },
+            dragData: true,
+            dragX: true,
+            dragOptions: {
+                magnet: {
+                    to: Math.round 
+                }
+            },
+            onDragStart: function (e) {
+              // do something
+              console.log('start',e);
+            },
+            onDrag: function (e, datasetIndex, index, value) {
+                let indexPaleta = index;
+                let hslColor = valHSLSliderColor(indexPaleta);
+                hslColor.s=Math.round(value.y);
+                hslColor.l=Math.round(value.x);
+                refreshPaleta(indexPaleta, hslColor,false);
+            },
+            onDragEnd: function (e, datasetIndex, index, value) {
+              let indexPaleta = index;
+              let hslColor = valHSLSliderColor(indexPaleta);
+              refreshPaleta(indexPaleta, hslColor);
             }
         }
     });
