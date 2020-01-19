@@ -95,9 +95,11 @@ input {
     display:flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    align-content: stretch;
+    padding-top:8px;
 }
 .c-paleta__slider-hue > input[type=range] {
-    height: 18px;
+    height: 16px;
     -webkit-appearance: none;
     width: 40px;
     display: block;
@@ -117,9 +119,11 @@ input {
     display:flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    align-content: stretch;
+    padding-top:8px;
 }
 .c-paleta__slider-saturation > input[type=range] {
-    height: 18px;
+    height: 16px;
     -webkit-appearance: none;
     width: 40px;
     display: block;
@@ -140,9 +144,10 @@ input {
     flex-direction: row;
     flex-wrap: nowrap;
     align-content: stretch;
+    padding-top:8px;
 }
 .c-paleta__slider-lightness > input[type=range] {
-    height: 18px;
+    height: 16px;
     -webkit-appearance: none;
     display: block;
     width: 100%;

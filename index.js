@@ -256,6 +256,14 @@ function createChart() {
                 }]
         },
         options: {
+            layout: {
+                padding: {
+                    left: 20,
+                    right: 20,
+                    top: 20,
+                    bottom: 20
+                }
+            },
             tooltips: {
                 callbacks: {
                     label: function(tooltipItem, data) {
@@ -271,6 +279,9 @@ function createChart() {
             scales: {
                 xAxes: [
                     {
+                        ticks: {
+
+			},
                         display: true,
                         scaleLabel: {
                             display: true,
@@ -281,6 +292,9 @@ function createChart() {
                 ],
                 yAxes: [
                     {
+                        ticks: {
+
+			},                        
                         display: true,
                         scaleLabel: {
                             display: true,
