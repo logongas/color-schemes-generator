@@ -78,9 +78,9 @@ $(document).ready(function () {
             }
         } else {
             hslColor = {
-                h: ((360 / (numPaletas + 1))) * (i + 1),
-                s: ((100 / (numPaletas + 1))) * (i + 1),
-                l: ((100 / (numPaletas + 1))) * (i + 1)
+                h: Math.round(((360 / (numPaletas + 1))) * (i + 1)),
+                s: Math.round(((100 / (numPaletas + 1))) * (i + 1)),
+                l: Math.round(((100 / (numPaletas + 1))) * (i + 1))
             }
             
         }
