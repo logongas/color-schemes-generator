@@ -1,3 +1,4 @@
+let numPaletas=9;
 
 function getHTMLPaleta(indexPaleta) {
 return `
@@ -52,10 +53,55 @@ function refreshPaleta(indexPaleta, color,noUpdateChart) {
 }
 
 
+function generarScheme() {
+    var indexColorCentral=Math.round(numPaletas/2)-1;
+    var maxSaturation=98;
+    var minLightness=10;
+    var maxLightness=100-minLightness;    
+    var hslColorCentral=valHSLNumberColor(indexColorCentral);
+    var rangeLightness=Math.min(maxLightness-hslColorCentral.l,hslColorCentral.l-minLightness);
+    if (rangeLightness<=0) {
+        rangeLightness=Math.min(100-hslColorCentral.l,hslColorCentral.l-0);
+    }
+    
+    
+    var realMinLightness=hslColorCentral.l-rangeLightness;    
+    var realMaxLightness=hslColorCentral.l+rangeLightness;    
+    var matrix=[
+        [realMinLightness*realMinLightness,realMinLightness,1],
+        [realMaxLightness*realMaxLightness,realMaxLightness,1],
+        [hslColorCentral.l*hslColorCentral.l,hslColorCentral.l,1]
+    ];
+    var vector=[maxSaturation,maxSaturation,hslColorCentral.s];
+    
+    var result=resolveEquationsSystem(matrix,vector);
+    
+    var h=hslColorCentral.h;
+    var incLightness=(realMaxLightness-realMinLightness)/(numPaletas-1);
+    var lightness=realMinLightness;
+    for(var i=0;i<numPaletas;i++) {
+        refreshPaleta(i, {
+            h:h,
+            s:Math.round(parabola(result,lightness)),
+            l:Math.round(lightness)
+        });
+        
+        lightness=lightness+incLightness;
+    } 
+    
+}
+
+function parabola(vector,x) {
+    
+    var y=(vector[0]*x*x)+(vector[1]*x)+vector[2];
+    
+    return y;
+}
 
 
 
-let numPaletas=7;
+
+
 $(document).ready(function () {
     
     createChart();
@@ -72,6 +118,7 @@ $(document).ready(function () {
     //Asignar colores iniciales
     for (let i = 0; i < numPaletas; i++) {
         let textHslColor=params.get("p"+i); 
+        let textRgbColor=params.get("r"+i); 
         let hslColor;
         if ((typeof textHslColor !== 'undefined') && (textHslColor!=null)) {
             let arrHslColor=textHslColor.split("-");
@@ -80,15 +127,18 @@ $(document).ready(function () {
                 s: arrHslColor[1],
                 l: arrHslColor[2]
             }
+            refreshPaleta(i, hslColor);
+        } else if ((typeof textRgbColor !== 'undefined') && (textRgbColor!=null)) { 
+            refreshPaleta(i, hexToRgb(textRgbColor));
         } else {
             hslColor = {
                 h: Math.round(((360 / (numPaletas + 1))) * (i + 1)),
                 s: Math.round(((100 / (numPaletas + 1))) * (i + 1)),
                 l: Math.round(((100 / (numPaletas + 1))) * (i + 1))
             }
-            
+            refreshPaleta(i, hslColor);
         }
-        refreshPaleta(i, hslColor);
+        
     }
 
 
