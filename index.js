@@ -55,34 +55,28 @@ function refreshPaleta(indexPaleta, color,noUpdateChart) {
 
 function generarScheme() {
     var indexColorCentral=Math.round(numPaletas/2)-1;
-    var maxSaturation=parseInt($("#maxSaturation").val(),10);
+    
+    
+    
+    
+    
     var minLightness=parseInt($("#minLightness").val(),10);
-    var maxLightness=100-minLightness;    
-    var hslColorCentral=valHSLNumberColor(indexColorCentral);
-    var rangeLightness=Math.min(maxLightness-hslColorCentral.l,hslColorCentral.l-minLightness);
-    if (rangeLightness<=0) {
-        rangeLightness=Math.min(100-hslColorCentral.l,hslColorCentral.l-0);
+    var lightnessRange=getLightnessRange(minLightness);
+    
+    
+    if ($("input[name='ecuacion']:checked").val()==="parabola") {
+        functionSaturationFromLightness=getFunctionParabolaSaturationFromLightness(lightnessRange)
+    } else {
+        functionSaturationFromLightness=getFunctionWeibullModelSaturationFromLightness();
     }
     
-    
-    var realMinLightness=hslColorCentral.l-rangeLightness;    
-    var realMaxLightness=hslColorCentral.l+rangeLightness;    
-    var matrix=[
-        [realMinLightness*realMinLightness,realMinLightness,1],
-        [realMaxLightness*realMaxLightness,realMaxLightness,1],
-        [hslColorCentral.l*hslColorCentral.l,hslColorCentral.l,1]
-    ];
-    var vector=[maxSaturation,maxSaturation,hslColorCentral.s];
-    
-    var result=resolveEquationsSystem(matrix,vector);
-    
-    var h=hslColorCentral.h;
-    var incLightness=(realMaxLightness-realMinLightness)/(numPaletas-1);
-    var lightness=realMinLightness;
+    var incLightness=(lightnessRange.realMaxLightness-lightnessRange.realMinLightness)/(numPaletas-1);
+    var h=getColorCentral().h;
+    var lightness=lightnessRange.realMinLightness;
     for(var i=0;i<numPaletas;i++) {
         refreshPaleta(i, {
             h:h,
-            s:Math.round(parabola(result,lightness)),
+            s:Math.round(functionSaturationFromLightness(lightness)),
             l:Math.round(lightness)
         });
         
@@ -91,13 +85,59 @@ function generarScheme() {
     
 }
 
-function parabola(vector,x) {
-    
-    var y=(vector[0]*x*x)+(vector[1]*x)+vector[2];
-    
-    return y;
+function getColorCentral() {
+    var indexColorCentral=Math.round(numPaletas/2)-1;
+    var hslColorCentral=valHSLNumberColor(indexColorCentral);
+    return hslColorCentral;
 }
 
+function getLightnessRange(minLightness) {
+    var maxLightness=100-minLightness;    
+    var hslColorCentral=getColorCentral();
+    var rangeLightness=Math.min(maxLightness-hslColorCentral.l,hslColorCentral.l-minLightness);
+    if (rangeLightness<=0) {
+        rangeLightness=Math.min(100-hslColorCentral.l,hslColorCentral.l-0);
+    }
+    
+    
+    return {
+        realMinLightness:hslColorCentral.l-rangeLightness,  
+        realMaxLightness:hslColorCentral.l+rangeLightness
+    }
+}
+
+function getFunctionParabolaSaturationFromLightness(lightnessRange) {
+    var maxSaturation=parseInt($("#maxSaturation").val(),10);
+    
+    var hslColorCentral=getColorCentral();
+    
+    var matrix=[
+        [lightnessRange.realMinLightness*lightnessRange.realMinLightness,lightnessRange.realMinLightness,1],
+        [lightnessRange.realMaxLightness*lightnessRange.realMaxLightness,lightnessRange.realMaxLightness,1],
+        [hslColorCentral.l*hslColorCentral.l,hslColorCentral.l,1]
+    ];
+    var vector=[maxSaturation,maxSaturation,hslColorCentral.s];
+    
+    var result=resolveEquationsSystem(matrix,vector);
+    var functionParabolaSaturationFromLightness=function(lightness) {
+        return Math.round((result[0]*lightness*lightness)+(result[1]*lightness)+result[2])
+    }
+    
+    return functionParabolaSaturationFromLightness;
+}
+
+
+function getFunctionWeibullModelSaturationFromLightness() {
+    var a=parseFloat($("#weibull-a").val(),10);
+    var b=parseFloat($("#weibull-b").val(),10);
+    var c=parseFloat($("#weibull-c").val(),10);
+    var d=parseFloat($("#weibull-d").val(),10);
+
+    return function (lightness) {
+        var saturation=a-(b*Math.exp(-c*(Math.pow(lightness,d))));
+        return saturation;
+    }
+}
 
 
 
