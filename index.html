@@ -31,18 +31,13 @@
                     <div class="c-panel__content">
                         <div>Mínima luminosidad:<input type="number" id="minLightness" value="5"></div>
                         <br>
-                        <br>
-                        <input type="radio" id="parabola" name="ecuacion" value="parabola" checked> <label for="parabola">Parabola</label><br>
+                        <input type="radio" id="parabola" name="ecuacion" value="parabola" > <label for="parabola">Parabola</label><br>
                         <div>Maxima saturación:<input type="number" id="maxSaturation" value="98"></div>
                         <br>
+                        <input type="radio" id="logistica" name="ecuacion" value="logistica" checked> <label for="logistica"><a href="https://en.wikipedia.org/wiki/Logistic_function">Función Logística</a></label><br>
+                        <div>Tasa de crecimiento:<input type="number" id="tasa-crecimiento" value="8" ></div>
                         <br>
-                        <input type="radio" id="weibull" name="ecuacion" value="weibull"> <label for="weibull">Weibull</label><br>
-                        <div>a:<input type="number" id="weibull-a" value="98.36756169731449"></div>
-                        <div>b:<input type="number" id="weibull-b" value="65.3338407167159"></div>
-                        <div>c:<input type="number" id="weibull-c" value="0.00000001231335226459"></div>
-                        <div>d:<input type="number" id="weibull-d" value="4.400608872469116"></div>
-                        <div><img src="Weibull.png" alt=""/></div>
-                        <br>
+                        <input type="radio" id="constante" name="ecuacion" value="constante" > <label for="constante">Constante</label><br>
                         <br>
                         <button onclick="generarScheme()">Generar esquema</button>
                     </div> 

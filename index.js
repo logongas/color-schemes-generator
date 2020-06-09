@@ -63,11 +63,16 @@ function generarScheme() {
     var minLightness=parseInt($("#minLightness").val(),10);
     var lightnessRange=getLightnessRange(minLightness);
     
-    
-    if ($("input[name='ecuacion']:checked").val()==="parabola") {
+    var ecuacion=$("input[name='ecuacion']:checked").val();
+    if (ecuacion==="parabola") {
         functionSaturationFromLightness=getFunctionParabolaSaturationFromLightness(lightnessRange)
+    } else if (ecuacion==="logistica") {
+        functionSaturationFromLightness=getFunctionLogisticaModelSaturationFromLightness();
+    } else if (ecuacion==="constante") {
+        functionSaturationFromLightness=getFunctionConstanteModelSaturationFromLightness();        
     } else {
-        functionSaturationFromLightness=getFunctionWeibullModelSaturationFromLightness();
+        alert("Ecuación desconocida");
+        exit;
     }
     
     var incLightness=(lightnessRange.realMaxLightness-lightnessRange.realMinLightness)/(numPaletas-1);
@@ -127,18 +132,28 @@ function getFunctionParabolaSaturationFromLightness(lightnessRange) {
 }
 
 
-function getFunctionWeibullModelSaturationFromLightness() {
-    var a=parseFloat($("#weibull-a").val(),10);
-    var b=parseFloat($("#weibull-b").val(),10);
-    var c=parseFloat($("#weibull-c").val(),10);
-    var d=parseFloat($("#weibull-d").val(),10);
-
+function getFunctionLogisticaModelSaturationFromLightness() {
+     var hslColorCentral=getColorCentral();
+    
+    var maxSaturation=parseInt($("#maxSaturation").val(),10);
+    var b=parseFloat($("#tasa-crecimiento").val(),10);
+    var amplitudSaturation=(maxSaturation-hslColorCentral.s);
+    var a=amplitudSaturation*2;
+        
     return function (lightness) {
-        var saturation=a-(b*Math.exp(-c*(Math.pow(lightness,d))));
+        saturation=(a/(1+Math.exp(-(b/100)*(lightness-hslColorCentral.l))))+(hslColorCentral.s-amplitudSaturation);
+        
         return saturation;
     }
 }
 
+function getFunctionConstanteModelSaturationFromLightness() {
+     var hslColorCentral=getColorCentral();
+   
+    return function (lightness) {
+        return hslColorCentral.s;
+    }
+}
 
 
 
