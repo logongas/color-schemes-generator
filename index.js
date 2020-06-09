@@ -55,8 +55,8 @@ function refreshPaleta(indexPaleta, color,noUpdateChart) {
 
 function generarScheme() {
     var indexColorCentral=Math.round(numPaletas/2)-1;
-    var maxSaturation=98;
-    var minLightness=10;
+    var maxSaturation=parseInt($("#maxSaturation").val(),10);
+    var minLightness=parseInt($("#minLightness").val(),10);
     var maxLightness=100-minLightness;    
     var hslColorCentral=valHSLNumberColor(indexColorCentral);
     var rangeLightness=Math.min(maxLightness-hslColorCentral.l,hslColorCentral.l-minLightness);
@@ -271,18 +271,23 @@ function updateChart() {
     colores.length = 0;
     puntos.length = 0;
 
+    var datos="lightness,saturation";
+
     for (let i = 0; i < numPaletas; i++) {
         let hslColor=valHSLSliderColor(i);
+        var x=hslColor.l;
+        var y=hslColor.s;
         let punto={
-            x:hslColor.l,
-            y:hslColor.s
+            x:x,
+            y:y
         }
         puntos.push(punto);
         colores.push("#"+rgbToHex(hslToRgb(hslColor)));
+        datos=datos+"\n"+x+","+y;
     }
 
     chartColores.update();
-
+    $("#tabla_datos").html(datos);
 }
 
 function createChart() {

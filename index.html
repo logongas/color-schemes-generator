@@ -29,7 +29,16 @@
                 <div class="c-panel">
                     <h2 class="c-panel__title">Generar Esquema desde color central</h2>
                     <div class="c-panel__content">
+                        <div>Maxima saturación:<input type="number" id="maxSaturation" value="98"></div>
+                        <div>Mínima luminosidad:<input type="number" id="minLightness" value="5"></div>
                         <button onclick="generarScheme()">Generar esquema</button>
+                    </div> 
+                </div>
+                <div class="c-panel">
+                    <h2 class="c-panel__title">Tabla datos</h2>
+                    <div class="c-panel__content">
+                        <br>
+                        <pre id="tabla_datos" style='font-family: "mono",Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospac'></pre>
                     </div> 
                 </div> 
             </div>            
