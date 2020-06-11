@@ -289,13 +289,13 @@ function generarTablaColoresHSL() {
     for (let i = 0; i < numPaletas; i++) {
         let hslColor=valHSLSliderColor(i);
         if (i!=0) {
-            datos=datos+",";
-            datosReverse=","+datosReverse;
+            datos=datos+",\n";
+            datosReverse=",\n"+datosReverse;
         }
         datos=datos+"hsl("+hslColor.h+","+hslColor.s+","+hslColor.l+")";
         datosReverse="hsl("+hslColor.h+","+hslColor.s+","+hslColor.l+")"+datosReverse;
     }
-    $("#tabla_colores_hsl").html(datos+"\n"+datosReverse);       
+    $("#tabla_colores_hsl").html(datos+"\n\n\n"+datosReverse);       
 }
 
 function createChart() {
