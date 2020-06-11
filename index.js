@@ -230,7 +230,6 @@ function updateChart() {
     colores.length = 0;
     puntos.length = 0;
 
-    var datos="lightness,saturation";
 
     for (let i = 0; i < numPaletas; i++) {
         let hslColor=valHSLSliderColor(i);
@@ -242,11 +241,61 @@ function updateChart() {
         }
         puntos.push(punto);
         colores.push("#"+rgbToHex(hslToRgb(hslColor)));
-        datos=datos+"\n"+x+","+y;
     }
 
     chartColores.update();
-    $("#tabla_datos").html(datos);
+    generarTablasDatos();
+}
+
+function generarTablasDatos() {
+    generarTablaLightnessSaturation();
+    generarTablaColoresRGB();
+    generarTablaColoresHSL();
+}
+
+
+function generarTablaLightnessSaturation() {
+    var datos="";
+
+    for (let i = 0; i < numPaletas; i++) {
+        let hslColor=valHSLSliderColor(i);
+        if (i!=0) {
+            datos=datos+"\n";
+        }
+        datos=datos+hslColor.l+","+hslColor.s;
+    }
+    $("#tabla_lightness_saturation").html(datos);
+}
+
+function generarTablaColoresRGB() {
+    var datos="";
+    var datosReverse="";
+
+    for (let i = 0; i < numPaletas; i++) {
+        let rgbColor=valRgbTextColor(i);
+        if (i!=0) {
+            datos=datos+",";
+            datosReverse=","+datosReverse;
+        }
+        datos=datos+"#"+rgbToHex(rgbColor);
+        datosReverse="#"+rgbToHex(rgbColor)+datosReverse;
+    }
+    $("#tabla_colores_rgb").html(datos+"\n"+datosReverse);    
+}
+function generarTablaColoresHSL() {
+    var datos="";
+    var datosReverse="";
+
+    for (let i = 0; i < numPaletas; i++) {
+        let hslColor=valHSLSliderColor(i);
+        if (i!=0) {
+            datos=datos+",";
+            datosReverse=","+datosReverse;
+        }
+        datos=datos+"hsl("+hslColor.h+","+hslColor.s+","+hslColor.l+")";
+        datosReverse="hsl("+hslColor.h+","+hslColor.s+","+hslColor.l+")"+datosReverse;
+    }
+    $("#tabla_colores_hsl").html(datos+"\n"+datosReverse);       
 }
 
 function createChart() {

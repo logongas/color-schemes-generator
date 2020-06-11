@@ -11,7 +11,7 @@
         <link href="main.css" rel="stylesheet" type="text/css"/>
     </head>
     <body class="c-page">
-        
+
         <div class="l-page">
             <div class="l-page__title">
                 <h1 class="c-main-title">Color Schemes Generator</h1>
@@ -21,9 +21,14 @@
             </div>
             <div class="l-page__chart">
                 <div class="c-chart">
-                    <canvas id="chartColores" ></canvas>  
+                    <canvas id="chartColores" ></canvas> 
+                    <div>
+                        <p>Lightness  & Saturation</p>
+                        <br>
+                        <pre id="tabla_lightness_saturation" style='font-family: "mono",Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospac'></pre>
+                    </div>
                 </div>
-                
+
             </div>
             <div class="l-page__config">
                 <div class="c-panel">
@@ -31,7 +36,7 @@
                     <div class="c-panel__content">
                         <div>Mínima luminosidad:<input type="number" id="minLightness" value="5"></div>
                         <div>Maxima saturación:<input type="number" id="maxSaturation" value="95"></div>
-                        
+
                         <div>Rotar Matiz<input type="number" id="rotate-hue" value="10"> Grados</div>
                         <br>
                         <input type="radio" id="parabola" name="ecuacion" value="parabola" > <label for="parabola">Parabola</label><br>
@@ -45,14 +50,23 @@
                     </div> 
                 </div>
                 <div class="c-panel">
-                    <h2 class="c-panel__title">Datos</h2>
+                    <h2 class="c-panel__title">Colores</h2>
                     <div class="c-panel__content">
-                        <pre id="tabla_datos" style='font-family: "mono",Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospac'></pre>
+                    <br>
+                    
+                        <p>RGB</p>
+                        <br>
+                        <pre id="tabla_colores_rgb" style='font-family: "mono",Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospac'></pre>
+                        <br>
+                        <br>
+                        <p>HSL</p>
+                        <br>
+                        <pre id="tabla_colores_hsl" style='font-family: "mono",Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospac'></pre>
                     </div> 
                 </div> 
             </div>            
         </div>
-        
+
 
 
 
@@ -63,9 +77,9 @@
         <script src="jquery-3.4.1.min.js" type="text/javascript"></script>
         <script src="Chart.bundle.js" type="text/javascript"></script>
         <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-dragdata@latest/dist/chartjs-plugin-dragdata.min.js"></script>
-        <script src="color.js" type="text/javascript"></script>
-        <script src="index.js" type="text/javascript"></script>   
+        <script src="color.js" type="text/javascript"></script>   
         <script src="matrix.js" type="text/javascript"></script>
         <script src="scheme-generator.js" type="text/javascript"></script>
+        <script src="index.js" type="text/javascript"></script>
     </body>
 </html>
