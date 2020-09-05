@@ -1,10 +1,12 @@
 .c-page {
+    font-family: 'Open Sans', sans-serif;
     background-color: hsl(210,100%,97%);
-    padding:20px;
+    padding: 5px 10px 5px 10px;
 }
 
 
 .l-page {
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
@@ -24,11 +26,11 @@
 }
 
 .l-page__chart {
-    grid-area: chart;    
+    grid-area: chart; 
 }
 
 .l-page__config {
-    grid-area: config;    
+    grid-area: config;   
 }
 
 
@@ -36,6 +38,9 @@
     font-size: 40px;
     font-family: 'Open Sans', sans-serif;
     padding-bottom: 5px;
+    padding-top: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
 
 
@@ -49,10 +54,16 @@
     width: 100%;
     background-color: #FFFFFF;
 }
-
+.c-paleta__titulo {
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    background-color: hsl(210,100%,97%);
+    padding-bottom: 4px;
+    text-align: center;
+}
 .c-paleta__color {
     background-color: #FF0000;
-    height: 400px;
+    height: 40vh;
 }
 
 .c-paleta__hex {
@@ -81,6 +92,16 @@ input {
     width: 80px;
 
 }
+
+.c-paleta__hex--central > input[type=text]{
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;  
+    width: 80px;
+
+}
+
 .c-paleta__hex > label {
     display: block;
     font-size: 22px;
@@ -183,6 +204,37 @@ input[type=number]::-webkit-outer-spin-button {
     font-family: 'Open Sans', sans-serif;
     padding: 10px;
 }
+
+.c-panel__title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .c-panel__content {
     padding-top: 10px;
+}
+
+.c-main-button {
+    background-color: #A7394F;
+    color: #FFFFFF;
+    
+    font-family: sans;
+    font-size: 18px;
+    padding:20px;
+
+    border-radius: 3px;
+    border-width: 1px;
+    border-style: solid;
+    border-width: 0px;
+ 
+  
+    display: inline-block;
+    
+    opacity:1;
+    
+    transition: background-color 0.5s ease;
+    cursor: pointer;
+    
+    outline: none!important;
+    
 }

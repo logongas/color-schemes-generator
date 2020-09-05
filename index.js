@@ -1,11 +1,22 @@
 let numPaletas=9;
 
-function getHTMLPaleta(indexPaleta) {
+function getHTMLPaleta(indexPaleta,isCentralColor) {
+    var titulo;
+    var classNameInput;
+    if (isCentralColor) {
+        titulo="Color central";
+        classNameInput="c-paleta__hex  c-paleta__hex--central";
+    } else {
+        titulo="&nbsp;";
+        classNameInput="c-paleta__hex";
+    }
+    
 return `
             <div class="c-paleta" id="paleta${indexPaleta}" >
+                <div class="c-paleta__titulo">${titulo}</div>     
                 <div class="c-paleta__color">
                 </div> 
-                <div class="c-paleta__hex">
+                <div class="${classNameInput}">
                     <label id='caption'>#</label>
                     <input type="text"  value="00FF00" >
                 </div>                 
@@ -65,11 +76,17 @@ $(document).ready(function () {
     
     createChart();
     const params = new URLSearchParams(window.location.search);  
- 
+    var indexColorCentral=Math.round(numPaletas/2)-1;
     
     //Generar las paletas
     for (let i = 0; i < numPaletas; i++) {
-        $(".l-paletas").append(getHTMLPaleta(i));
+        var isCentralColor;
+        if (i===indexColorCentral) {
+            isCentralColor=true;
+        } else {
+            isCentralColor=false;
+        }
+        $(".l-paletas").append(getHTMLPaleta(i,isCentralColor));
     }
 
     eventsChange();
@@ -274,13 +291,13 @@ function generarTablaColoresRGB() {
     for (let i = 0; i < numPaletas; i++) {
         let rgbColor=valRgbTextColor(i);
         if (i!=0) {
-            datos=datos+",";
-            datosReverse=","+datosReverse;
+            datos=datos+", ";
+            datosReverse=", "+datosReverse;
         }
         datos=datos+"#"+rgbToHex(rgbColor);
         datosReverse="#"+rgbToHex(rgbColor)+datosReverse;
     }
-    $("#tabla_colores_rgb").html(datos+"\n"+datosReverse);    
+    $("#tabla_colores_rgb").html(datos+"<br><br>"+datosReverse);    
 }
 function generarTablaColoresHSL() {
     var datos="";
@@ -295,7 +312,7 @@ function generarTablaColoresHSL() {
         datos=datos+"hsl("+hslColor.h+","+hslColor.s+","+hslColor.l+")";
         datosReverse="hsl("+hslColor.h+","+hslColor.s+","+hslColor.l+")"+datosReverse;
     }
-    $("#tabla_colores_hsl").html(datos+"\n\n\n"+datosReverse);       
+    $("#tabla_colores_hsl").html(datos+"<br><br>"+datosReverse);       
 }
 
 function createChart() {

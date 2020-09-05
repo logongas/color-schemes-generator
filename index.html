@@ -32,7 +32,7 @@
             </div>
             <div class="l-page__config">
                 <div class="c-panel">
-                    <h2 class="c-panel__title">Generar Esquema desde color central</h2>
+                    <h2 class="c-panel__title">Generar esquema desde color central</h2>
                     <div class="c-panel__content">
                         <div>Mínima luminosidad:<input type="number" id="minLightness" value="5"></div>
                         <div>Maxima saturación:<input type="number" id="maxSaturation" value="95"></div>
@@ -46,9 +46,12 @@
                         <br>
                         <input type="radio" id="constante" name="ecuacion" value="constante" > <label for="constante">Constante</label><br>
                         <br>
-                        <button onclick="generarScheme()">Generar esquema</button>
+                        <button class="c-main-button" onclick="generarScheme()">Generar esquema</button>
                     </div> 
                 </div>
+                <br>
+                <br>
+                <br>
                 <div class="c-panel">
                     <h2 class="c-panel__title">Colores</h2>
                     <div class="c-panel__content">
@@ -56,12 +59,12 @@
                     
                         <p>RGB</p>
                         <br>
-                        <pre id="tabla_colores_rgb" style='font-family: "mono",Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospac'></pre>
+                        <p id="tabla_colores_rgb" style='font-family: "mono",Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospac'></p>
                         <br>
                         <br>
                         <p>HSL</p>
                         <br>
-                        <pre id="tabla_colores_hsl" style='font-family: "mono",Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospac'></pre>
+                        <p id="tabla_colores_hsl" style='font-family: "mono",Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospac'></p>
                     </div> 
                 </div> 
             </div>            
