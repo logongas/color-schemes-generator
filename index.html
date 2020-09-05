@@ -34,10 +34,10 @@
                 <div class="c-panel">
                     <h2 class="c-panel__title">Generar esquema desde color central</h2>
                     <div class="c-panel__content">
-                        <div>Mínima luminosidad:<input type="number" id="minLightness" value="5"></div>
-                        <div>Maxima saturación:<input type="number" id="maxSaturation" value="95"></div>
+                        <div>Mínima luminosidad:<input type="number" id="minLightness" value="5"  min="0" max="100"></div>
+                        <div>Maxima saturación:<input type="number" id="maxSaturation" value="95"  min="0" max="100"></div>
 
-                        <div>Rotar Matiz<input type="number" id="rotate-hue" value="10"> Grados</div>
+                        <div>Rotar Matiz<input type="number" id="rotate-hue" value="10" min="0" max="365"> Grados</div>
                         <br>
                         <input type="radio" id="parabola" name="ecuacion" value="parabola" > <label for="parabola">Parabola</label><br>
                         <br>

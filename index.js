@@ -360,20 +360,24 @@ function createChart() {
                 xAxes: [
                     {
                         ticks: {
-
+                            beginAtZero: true,
+                            max:100
+                            
 			},
                         display: true,
                         scaleLabel: {
                             display: true,
-                            labelString: 'Lightness',
+                            labelString: 'Luminosidad',
                             fontSize:25
+                            
                         }
                     }
                 ],
                 yAxes: [
                     {
                         ticks: {
-
+                            beginAtZero: true,
+                            max:100
 			},                        
                         display: true,
                         scaleLabel: {
