@@ -56,7 +56,6 @@ function refreshPaleta(indexPaleta, color,noUpdateChart) {
     valRgbTextColor(indexPaleta, rgbColor);
     valHSLSliderColor(indexPaleta, hslColor);
     valHSLNumberColor(indexPaleta, hslColor);
-    updateQueryString(indexPaleta);
     
     if (!noUpdateChart) {
         updateChart();
@@ -232,12 +231,7 @@ function valHSLNumberColor(indexPaleta, hslColor) {
     };
 }
 
-function updateQueryString(indexPaleta) {
-   let url = new URL(window.location.href);
-   hslColor=valHSLNumberColor(indexPaleta);
-    url.searchParams.set('p'+indexPaleta,hslColor.h+"-"+hslColor.s+"-"+hslColor.l );
-    history.replaceState( undefined , undefined, url.toString() );
-}
+
 
     let colores=[];
     let puntos=[];
@@ -268,6 +262,7 @@ function generarTablasDatos() {
     generarTablaLightnessSaturation();
     generarTablaColoresRGB();
     generarTablaColoresHSL();
+    generarLinkPermanente();
 }
 
 
@@ -318,6 +313,19 @@ function generarTablaColoresHSL() {
         datosReverse="hsl("+hslColor.h+","+hslColor.s+","+hslColor.l+")"+datosReverse;
     }
     $("#tabla_colores_hsl").html(datos+"<br><br>"+datosReverse);       
+}
+
+function generarLinkPermanente() {
+   let url = new URL(window.location.href);
+
+    for (let i = 0; i < numPaletas; i++) {
+        hslColor=valHSLNumberColor(i);
+        url.searchParams.set('p'+i,hslColor.h+"-"+hslColor.s+"-"+hslColor.l );
+    }
+    $("#enlacePermanente").html(url.toString());
+    $("#enlacePermanente").attr("href",url.toString());
+   
+    
 }
 
 function createChart() {

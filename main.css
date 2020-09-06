@@ -13,8 +13,9 @@
     grid-template-areas: 
         "title title"
         "paletas paletas"
-        "chart config";
-
+        "chart config"
+        "enlace enlace"
+        "rgb hsl";
 }
 
 .l-page__title {
@@ -32,6 +33,19 @@
 .l-page__config {
     grid-area: config;   
 }
+
+.l-page__enlace {
+    grid-area: enlace;   
+}
+
+.l-page__rgb {
+    grid-area: rgb;   
+}
+
+.l-page__hsl {
+    grid-area: hsl;   
+}
+
 
 
 .c-main-title {
@@ -207,7 +221,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .c-panel__title {
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .c-panel__content {
@@ -215,7 +229,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .c-main-button {
-    background-color: #A7394F;
+    background-color: #2968D6;
     color: #FFFFFF;
     
     font-family: sans;
@@ -236,5 +250,7 @@ input[type=number]::-webkit-outer-spin-button {
     cursor: pointer;
     
     outline: none!important;
+    
+    width: 90%;
     
 }

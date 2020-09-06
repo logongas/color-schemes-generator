@@ -22,13 +22,13 @@
             <div class="l-page__chart">
                 <div class="c-chart">
                     <canvas id="chartColores" ></canvas> 
-                    <div>
+                    <div style="display:none">
                         <p>Lightness  & Saturation</p>
                         <br>
                         <pre id="tabla_lightness_saturation" style='font-family: "mono",Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospac'></pre>
                     </div>
+                    
                 </div>
-
             </div>
             <div class="l-page__config">
                 <div class="c-panel">
@@ -50,24 +50,38 @@
                     </div> 
                 </div>
                 <br>
+                
+               
+            </div> 
+            <div class="l-page__enlace">
+                <br>
+                <br>
+                            <div class="c-panel">
+                    <h2 class="c-panel__title">Enlace permanente</h2>
+                    <div class="c-panel__content">
+                        <a href="" id="enlacePermanente"></a>
+                    </div> 
+                </div>  
+            </div>
+            <div class="l-page__rgb">
                 <br>
                 <br>
                 <div class="c-panel">
-                    <h2 class="c-panel__title">Colores</h2>
+                    <h2 class="c-panel__title">Colores RGB</h2>
                     <div class="c-panel__content">
-                    <br>
-                    
-                        <p>RGB</p>
-                        <br>
-                        <p id="tabla_colores_rgb" style='font-family: "mono",Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospac'></p>
-                        <br>
-                        <br>
-                        <p>HSL</p>
-                        <br>
-                        <p id="tabla_colores_hsl" style='font-family: "mono",Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospac'></p>
+                        <p id="tabla_colores_rgb" style='font-family: "mono",Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-size:13px;'></p>
                     </div> 
                 </div> 
-            </div>            
+            </div>
+            <div class="l-page__hsl">
+                <br>
+                <br>
+                <div class="c-panel">
+                    <h2 class="c-panel__title">Colores HSL</h2>
+                    <div class="c-panel__content">
+                        <p id="tabla_colores_hsl" style='font-family: "mono",Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-size:13px;'></p>
+                </div> 
+            </div>
         </div>
 
 
