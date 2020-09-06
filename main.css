@@ -1,6 +1,6 @@
 .c-page {
     font-family: 'Open Sans', sans-serif;
-    background-color: hsl(210,100%,97%);
+    background-color: #F2F2F2;
     padding: 5px 10px 5px 10px;
 }
 
@@ -71,7 +71,7 @@
 .c-paleta__titulo {
     font-size: 14px;
     font-family: 'Open Sans', sans-serif;
-    background-color: hsl(210,100%,97%);
+    background-color: #F2F2F2;
     padding-bottom: 4px;
     text-align: center;
 }
