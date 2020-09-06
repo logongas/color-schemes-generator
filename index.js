@@ -89,7 +89,14 @@ $(document).ready(function () {
     }
 
     eventsChange();
-    
+    var hueRandom=Math.floor(Math.random() * 365);
+    refreshPaleta(indexColorCentral,  {
+        h: hueRandom,
+        s: 50,
+        l: 50 
+    });
+    generarScheme();
+
     //Asignar colores iniciales
     for (let i = 0; i < numPaletas; i++) {
         let textHslColor=params.get("p"+i); 
@@ -105,15 +112,7 @@ $(document).ready(function () {
             refreshPaleta(i, hslColor);
         } else if ((typeof textRgbColor !== 'undefined') && (textRgbColor!=null)) { 
             refreshPaleta(i, hexToRgb(textRgbColor));
-        } else {
-            hslColor = {
-                h: Math.round(((360 / (numPaletas + 1))) * (i + 1)),
-                s: Math.round(((100 / (numPaletas + 1))) * (i + 1)),
-                l: Math.round(((100 / (numPaletas + 1))) * (i + 1))
-            }
-            refreshPaleta(i, hslColor);
         }
-        
     }
 
 
@@ -395,7 +394,7 @@ function createChart() {
                         display: true,
                         scaleLabel: {
                             display: true,
-                            labelString: 'Saturation',
+                            labelString: 'Saturación',
                             fontSize:25
                         }
                     }

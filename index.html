@@ -43,9 +43,9 @@
 
                         <div>Rotar Matiz:<input type="number" id="rotate-hue" value="10" min="0" max="365"> Grados</div>
                         <br>
-                        <input type="radio" id="parabola" name="ecuacion" value="parabola" > <label for="parabola">Parabola</label><br>
+                        <input type="radio" id="parabola" name="ecuacion" value="parabola" checked> <label for="parabola">Parabola</label><br>
                         <br>
-                        <input type="radio" id="logistica" name="ecuacion" value="logistica" checked> <label for="logistica">Función Logística</label>:<a href="https://en.wikipedia.org/wiki/Logistic_function">Wikipedia</a><br>
+                        <input type="radio" id="logistica" name="ecuacion" value="logistica" > <label for="logistica">Función Logística</label>:<a href="https://en.wikipedia.org/wiki/Logistic_function">Wikipedia</a><br>
                         <div>Tasa de crecimiento:<input type="number" id="tasa-crecimiento" value="8" ></div>
                         <br>
                         <input type="radio" id="constante" name="ecuacion" value="constante" > <label for="constante">Constante</label><br>
@@ -84,6 +84,7 @@
                     <h2 class="c-panel__title">Colores HSL</h2>
                     <div class="c-panel__content">
                         <p id="tabla_colores_hsl" style='font-family: "mono",Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-size:13px;'></p>
+                    </div>
                 </div> 
             </div>
         </div>
@@ -97,10 +98,11 @@
 
         <script src="jquery-3.4.1.min.js" type="text/javascript"></script>
         <script src="Chart.bundle.js" type="text/javascript"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-dragdata@latest/dist/chartjs-plugin-dragdata.min.js"></script>
+        <script src="chartjs-plugin-dragdata.min.js"></script>
         <script src="color.js" type="text/javascript"></script>   
         <script src="matrix.js" type="text/javascript"></script>
         <script src="scheme-generator.js" type="text/javascript"></script>
         <script src="index.js" type="text/javascript"></script>
+    
     </body>
 </html>
