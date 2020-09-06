@@ -33,14 +33,10 @@ function generarScheme() {
     
 }
 
-function getLightnessRange(minLightness) {
-    var maxLightness=100-minLightness;    
+function getLightnessRange(minLightness) {;    
     var hslColorCentral=getColorCentral();
-    var rangeLightness=Math.min(maxLightness-hslColorCentral.l,hslColorCentral.l-minLightness);
-    if (rangeLightness<=0) {
-        rangeLightness=Math.min(100-hslColorCentral.l,hslColorCentral.l-0);
-    }
-    
+    var rangeLightness=Math.abs(Math.min(hslColorCentral.l-minLightness,100-hslColorCentral.l));
+
     
     return {
         realMinLightness:hslColorCentral.l-rangeLightness,  

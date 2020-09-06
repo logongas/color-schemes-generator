@@ -290,6 +290,11 @@ function generarTablaColoresRGB() {
 
     for (let i = 0; i < numPaletas; i++) {
         let rgbColor=valRgbTextColor(i);
+        
+        if (rgbColor===null) {
+            break;
+        }
+        
         if (i!=0) {
             datos=datos+", ";
             datosReverse=", "+datosReverse;
