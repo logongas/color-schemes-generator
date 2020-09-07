@@ -1,6 +1,14 @@
+html {
+  box-sizing: border-box;
+}
+ 
+*, *:before, *:after {
+  box-sizing: inherit;
+  }
+
 .c-page {
     font-family: 'Open Sans', sans-serif;
-    background-color: #F2F2F2;
+    background-color: #F8F8F8;
     padding: 5px 10px 5px 10px;
 }
 
@@ -66,12 +74,12 @@
 
 .c-paleta {
     width: 100%;
-    background-color: #FFFFFF;
+    background-color: transparent;
 }
 .c-paleta__titulo {
     font-size: 14px;
     font-family: 'Open Sans', sans-serif;
-    background-color: #F2F2F2;
+    background-color: transparent;
     padding-bottom: 4px;
     text-align: center;
 }
@@ -99,11 +107,22 @@ input {
     outline: none;
 }
 
+.c-paleta__hex > label {
+    height: 35px;
+    padding: 5px;
+}
+
 .c-paleta__hex > input[type=text]{
     display: block;
     font-size: 20px;
     font-family: 'Open Sans', sans-serif;  
-    width: 80px;
+    width: 90px;
+    height: 35px;
+    background-color: #FFFFFF;
+    padding: 5px;
+    border: 1px solid #E5E5E5;
+    border-radius: 3px;
+    
 
 }
 
@@ -112,7 +131,7 @@ input {
     font-size: 22px;
     font-weight: bold;
     font-family: 'Open Sans', sans-serif;  
-    width: 80px;
+    width: 90px;
 
 }
 
@@ -227,6 +246,15 @@ input[type=number]::-webkit-outer-spin-button {
 .c-panel__content {
     padding-top: 10px;
 }
+
+.c-panel__content  input[type=number] {
+    padding: 5px;
+    border: 1px solid #E5E5E5;
+    border-radius: 3px;
+    width: 80px;
+}
+
+
 
 .c-main-button {
     background-color: #2968D6;
