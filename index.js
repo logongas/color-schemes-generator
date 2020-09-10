@@ -88,6 +88,23 @@ $(document).ready(function () {
         $(".l-paletas").append(getHTMLPaleta(i,isCentralColor));
     }
 
+    if (params.get("minLightness")) {
+        $("#minLightness").val(params.get("minLightness"));
+    }
+    if (params.get("maxSaturation")) {
+        $("#maxSaturation").val(params.get("maxSaturation"));
+    }
+    if (params.get("rotate-hue")) {
+        $("#rotate-hue").val(params.get("rotate-hue"));
+    }
+    if (params.get("ecuacion")) {
+        $("input[name='ecuacion']").val([params.get("ecuacion")]);
+    }
+    if (params.get("tasa-crecimiento")) {
+        $("#tasa-crecimiento").val(params.get("tasa-crecimiento"));
+    }
+
+
     eventsChange();
     var hueRandom=Math.floor(Math.random() * 365);
     refreshPaleta(indexColorCentral,  {
@@ -321,6 +338,13 @@ function generarLinkPermanente() {
         hslColor=valHSLNumberColor(i);
         url.searchParams.set('p'+i,hslColor.h+"-"+hslColor.s+"-"+hslColor.l );
     }
+    
+    url.searchParams.set('minLightness', $("#minLightness").val());
+    url.searchParams.set('maxSaturation',$("#maxSaturation").val() );
+    url.searchParams.set('rotate-hue',$("#rotate-hue").val() );
+    url.searchParams.set('ecuacion',$("input[name='ecuacion']:checked").val() );
+    url.searchParams.set('tasa-crecimiento',$("#tasa-crecimiento").val());
+    
     $("#enlacePermanente").html(url.toString());
     $("#enlacePermanente").attr("href",url.toString());
    

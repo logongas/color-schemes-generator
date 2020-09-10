@@ -31,6 +31,8 @@ function generarScheme() {
         lightness=lightness+incLightness;
     } 
     
+    generarLinkPermanente();
+    
 }
 
 function getLightnessRange(minLightness) {;    

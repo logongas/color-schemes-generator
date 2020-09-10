@@ -38,15 +38,15 @@
                 <div class="c-panel">
                     <h2 class="c-panel__title">Generar esquema desde color central</h2>
                     <div class="c-panel__content">
-                        <div>Mínima luminosidad:<input type="number" id="minLightness" value="5"  min="0" max="100"></div>
-                        <div>Maxima saturación:<input type="number" id="maxSaturation" value="95"  min="0" max="100"></div>
+                        <div>Mínima luminosidad:<input type="number" id="minLightness" name="minLightness" value="5"  min="0" max="100"></div>
+                        <div>Maxima saturación:<input type="number" id="maxSaturation" name="maxSaturation" value="95"  min="0" max="100"></div>
 
-                        <div>Rotar Matiz:<input type="number" id="rotate-hue" value="10" min="0" max="365"> Grados</div>
+                        <div>Rotar Matiz:<input type="number" id="rotate-hue" name="rotate-hue" value="10" min="0" max="365"> Grados</div>
                         <br>
                         <input type="radio" id="parabola" name="ecuacion" value="parabola" checked> <label for="parabola">Parabola</label><br>
                         <br>
                         <input type="radio" id="logistica" name="ecuacion" value="logistica" > <label for="logistica">Función Logística</label>:<a href="https://en.wikipedia.org/wiki/Logistic_function">Wikipedia</a><br>
-                        <div>Tasa de crecimiento:<input type="number" id="tasa-crecimiento" value="8" ></div>
+                        <div>Tasa de crecimiento:<input type="number" id="tasa-crecimiento" name="tasa-crecimiento" value="8" ></div>
                         <br>
                         <input type="radio" id="constante" name="ecuacion" value="constante" > <label for="constante">Constante</label><br>
                         <br>
