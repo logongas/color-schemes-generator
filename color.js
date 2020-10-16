@@ -101,3 +101,42 @@ function isHslColor(color) {
 function isRgbColor(color) {
     return ((typeof color !== 'undefined') && (typeof color.r !== 'undefined') && (typeof color.g !== 'undefined') && (typeof color.b !== 'undefined'));
 }
+
+
+
+
+
+
+
+
+function inverseGammaRGB(ic) {
+    
+    var c = ic/255.0;
+    if ( c <= 0.04045 ) {
+        return c/12.92;
+    } else {
+        return Math.pow(((c+0.055)/(1.055)),2.4);
+    }
+}
+
+function gammaRGB(v) {
+    if(v<=0.0031308) {
+        v *= 12.92;
+    } else {
+        v = 1.055*Math.pow(v,1.0/2.4)-0.055;
+    }
+    return v*255; 
+                           
+}
+
+function luminosidadAparente(rgbColor) {
+var rY = 0.212655;
+var gY = 0.715158;
+var bY = 0.072187;
+    
+    return gammaRGB(
+            rY*inverseGammaRGB(rgbColor.r) +
+            gY*inverseGammaRGB(rgbColor.g) +
+            bY*inverseGammaRGB(rgbColor.b)
+    );
+}
