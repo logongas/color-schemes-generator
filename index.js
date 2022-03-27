@@ -310,8 +310,8 @@ function generarTablaColoresRGB() {
             datos=datos+", ";
             datosReverse=", "+datosReverse;
         }
-        datos=datos+"#"+rgbToHex(rgbColor);
-        datosReverse="#"+rgbToHex(rgbColor)+datosReverse;
+        datos=datos+"\"#"+rgbToHex(rgbColor)+"\"";
+        datosReverse="\"#"+rgbToHex(rgbColor)+"\""+datosReverse;
     }
     $("#tabla_colores_rgb").html(datos+"<br><br>"+datosReverse);    
 }
