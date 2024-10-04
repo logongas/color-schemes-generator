@@ -310,10 +310,10 @@ function generarTablaColoresRGB() {
             datos=datos+", ";
             datosReverse=", "+datosReverse;
         }
-        datos=datos+"\"#"+rgbToHex(rgbColor)+"\"";
-        datosReverse="\"#"+rgbToHex(rgbColor)+"\""+datosReverse;
+        datos=datos+"#"+rgbToHex(rgbColor)+"";
+
     }
-    $("#tabla_colores_rgb").html(datos+"<br><br>"+datosReverse);    
+    $("#tabla_colores_rgb").html(datos);    
 }
 function generarTablaColoresHSL() {
     var datos="";
@@ -325,10 +325,9 @@ function generarTablaColoresHSL() {
             datos=datos+",\n";
             datosReverse=",\n"+datosReverse;
         }
-        datos=datos+"hsl("+hslColor.h+","+hslColor.s+","+hslColor.l+")";
-        datosReverse="hsl("+hslColor.h+","+hslColor.s+","+hslColor.l+")"+datosReverse;
+        datos=datos+"hsl("+hslColor.h+"deg "+hslColor.s+"% "+hslColor.l+"%)";
     }
-    $("#tabla_colores_hsl").html(datos+"<br><br>"+datosReverse);       
+    $("#tabla_colores_hsl").html(datos);       
 }
 
 function generarLinkPermanente() {
